@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoCard test renders correctly 1`] = `
+<Card
+  animate={true}
+  expanderIcon={
+    <FontIcon
+      iconClassName="material-icons"
+    >
+      keyboard_arrow_down
+    </FontIcon>
+  }
+  expanderTooltipPosition="left"
+  onClick={[Function]}
+>
+  <CardTitle
+    avatar={
+      <Avatar
+        random={true}
+        suffixes={
+          Array [
+            "red",
+            "pink",
+            "purple",
+            "deep-purple",
+            "indigo",
+            "blue",
+            "light-blue",
+            "cyan",
+            "teal",
+            "green",
+            "light-green",
+            "lime",
+            "yellow",
+            "amber",
+            "orange",
+            "deep-orange",
+            "brown",
+            "grey",
+            "blue-grey",
+          ]
+        }
+      >
+         
+        R
+         
+      </Avatar>
+    }
+    subtitle="reactjs app"
+    title="repo name"
+  />
+  <CardText
+    component="section"
+  >
+    <p />
+    <List>
+      <ListItem
+        activeClassName="md-text--theme-primary"
+        animateNestedItems={true}
+        component="div"
+        expanderIcon={
+          <FontIcon
+            iconClassName="material-icons"
+          >
+            keyboard_arrow_down
+          </FontIcon>
+        }
+        itemComponent="li"
+        primaryText="ES"
+        renderChildrenOutside={false}
+        secondaryText="Language"
+      />
+    </List>
+  </CardText>
+</Card>
+`;

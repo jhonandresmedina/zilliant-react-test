@@ -1,44 +1,43 @@
-import React from 'react'
-import { Drawer, List, ListItem, Avatar, FontIcon } from 'react-md'
-
-import { connect } from '../store'
+//@vendor
+import React from 'react';
+import { Drawer, List, ListItem, Avatar, FontIcon } from 'react-md';
 
 const Sidebar = ({ user }) => {
-  console.log(user)
-  return (
-    user
-    ? <Drawer
-      className='sidebar'
-      type={Drawer.DrawerTypes.PERSISTENT}
-      visible
-      onMediaTypeChange={() => {}}
-      onVisibilityChange={() => {}}
-    >
-      <List>
-        <ListItem
-          leftAvatar={<Avatar icon={<FontIcon>favorite</FontIcon>}/>}
-          primaryText="Following"
-          secondaryText={user.following}
-        />
-        <ListItem
-          leftAvatar={<Avatar icon={<FontIcon>group</FontIcon>}/>}
-          primaryText="Followers"
-          secondaryText={user.followers}
-        />
-        <ListItem
-          leftAvatar={<Avatar icon={<FontIcon>folder_special</FontIcon>}/>}
-          primaryText="Public Repos"
-          secondaryText={user.public_repos}
-        />
-        <ListItem
-          leftAvatar={<Avatar icon={<FontIcon>local_activity</FontIcon>}/>}
-          primaryText="Public Gists"
-          secondaryText={user.public_gists}
-        />
-      </List>
-    </Drawer>
-    : null
-  )
-}
+    const getAvatarIcon = description => {
+        return <Avatar icon={<FontIcon>{description}</FontIcon>} />;
+    };
 
-export default connect(Sidebar)
+    return user ? (
+        <Drawer
+            className='sidebar'
+            type={Drawer.DrawerTypes.PERSISTENT}
+            visible
+            onMediaTypeChange={() => {}}
+            onVisibilityChange={() => {}}>
+            <List>
+                <ListItem
+                    leftAvatar={getAvatarIcon('favorite')}
+                    primaryText='Following'
+                    secondaryText={user.get('following')}
+                />
+                <ListItem
+                    leftAvatar={getAvatarIcon('group')}
+                    primaryText='Followers'
+                    secondaryText={user.get('followers')}
+                />
+                <ListItem
+                    leftAvatar={getAvatarIcon('folder_special')}
+                    primaryText='Public Repos'
+                    secondaryText={user.get('public_repos')}
+                />
+                <ListItem
+                    leftAvatar={getAvatarIcon('local_activity')}
+                    primaryText='Public Gists'
+                    secondaryText={user.get('public_gists')}
+                />
+            </List>
+        </Drawer>
+    ) : null;
+};
+
+export default Sidebar;

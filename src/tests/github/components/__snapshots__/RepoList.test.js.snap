@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoList test renders correctly 1`] = `
+<Grid
+  component="div"
+  noSpacing={false}
+  stacked={false}
+>
+  id
+  <Cell
+    component="div"
+    desktopHidden={false}
+    key="id"
+    phoneHidden={false}
+    size={6}
+    tabletHidden={false}
+  >
+    <RepoCard
+      repo={77777}
+      selectRepo={[MockFunction]}
+    />
+  </Cell>
+  name
+  <Cell
+    component="div"
+    desktopHidden={false}
+    key="name"
+    phoneHidden={false}
+    size={6}
+    tabletHidden={false}
+  >
+    <RepoCard
+      repo="repo name"
+      selectRepo={[MockFunction]}
+    />
+  </Cell>
+  full_name
+  <Cell
+    component="div"
+    desktopHidden={false}
+    key="full_name"
+    phoneHidden={false}
+    size={6}
+    tabletHidden={false}
+  >
+    <RepoCard
+      repo="reactjs app"
+      selectRepo={[MockFunction]}
+    />
+  </Cell>
+  language
+  <Cell
+    component="div"
+    desktopHidden={false}
+    key="language"
+    phoneHidden={false}
+    size={6}
+    tabletHidden={false}
+  >
+    <RepoCard
+      repo="ES"
+      selectRepo={[MockFunction]}
+    />
+  </Cell>
+</Grid>
+`;

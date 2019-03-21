@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
+import '../node_modules/react-md/dist/react-md.deep_orange-blue.min.css';
 
-import '../node_modules/react-md/dist/react-md.deep_orange-blue.min.css'
-import { GitHubStore } from './github/store'
-import Layout from './github/components/Layout'
-import Repos from './github/components/Repos'
+//@vendor
+import React from 'react';
 
-class App extends Component {
-  render() {
+//@components
+import Layout from './github/components/Layout';
+import Repos from './github/components/Repos';
+
+const App = () => {
     return (
-      <GitHubStore>
         <Layout>
-          <Repos />
+            <Repos />
         </Layout>
-      </GitHubStore>
     );
-  }
-}
+};
 
 export default App;

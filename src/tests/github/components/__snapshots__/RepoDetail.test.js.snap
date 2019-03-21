@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RepoDetail test renders correctly 1`] = `
+<div
+  style={
+    Object {
+      "paddingRight": "20px",
+      "paddingTop": "20px",
+      "width": "100%",
+    }
+  }
+>
+  <withInk(withTooltip(Button))
+    floating={true}
+    inkTransitionEnterTimeout={450}
+    inkTransitionLeaveTimeout={300}
+    inkTransitionOverlap={150}
+    mini={true}
+    onClick={[MockFunction]}
+    style={
+      Object {
+        "marginBottom": "20px",
+      }
+    }
+  >
+    arrow_back
+  </withInk(withTooltip(Button))>
+  <Paper
+    component="div"
+    style={
+      Object {
+        "padding": "20px",
+      }
+    }
+    zDepth={1}
+  >
+    <h2>
+      repo name
+    </h2>
+    <DataTable
+      checkboxHeaderLabel="Toggle All Rows"
+      checkboxLabelTemplate="Toggle row {{row}}"
+      defaultSelectedRows={Array []}
+      fixedDividers={true}
+      fixedFooter={false}
+      fixedHeader={false}
+      footerHeight={48}
+      fullWidth={true}
+      headerHeight={56}
+      indeterminateIcon={
+        <FontIcon
+          iconClassName="material-icons"
+        >
+          indeterminate_check_box
+        </FontIcon>
+      }
+      plain={true}
+      responsive={true}
+      selectableRows={true}
+    >
+      <TableBody>
+        <TableRow
+          key="id"
+        >
+          <withTooltip(TableColumn)>
+            ID
+          </withTooltip(TableColumn)>
+          <withTooltip(TableColumn)>
+            77777
+          </withTooltip(TableColumn)>
+        </TableRow>
+        <TableRow
+          key="name"
+        >
+          <withTooltip(TableColumn)>
+            NAME
+          </withTooltip(TableColumn)>
+          <withTooltip(TableColumn)>
+            repo name
+          </withTooltip(TableColumn)>
+        </TableRow>
+        <TableRow
+          key="full_name"
+        >
+          <withTooltip(TableColumn)>
+            FULL_NAME
+          </withTooltip(TableColumn)>
+          <withTooltip(TableColumn)>
+            reactjs app
+          </withTooltip(TableColumn)>
+        </TableRow>
+        <TableRow
+          key="language"
+        >
+          <withTooltip(TableColumn)>
+            LANGUAGE
+          </withTooltip(TableColumn)>
+          <withTooltip(TableColumn)>
+            ES
+          </withTooltip(TableColumn)>
+        </TableRow>
+      </TableBody>
+    </DataTable>
+  </Paper>
+</div>
+`;
