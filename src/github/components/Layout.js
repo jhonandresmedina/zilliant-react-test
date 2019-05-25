@@ -1,47 +1,80 @@
-import React, { Component } from 'react'
-import { CircularProgress, Snackbar } from 'react-md'
+//@vendor
+import React, { Component } from 'react';
+import { CircularProgress, Snackbar } from 'react-md';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import TopBar from './TopBar'
-import Sidebar from './Sidebar'
-import { connect } from '../store'
+//@actions
+import { fetchUserRequest, fetchReposRequest, dismissError } from '../../actions/githubActions';
+
+//@components
+import TopBar from '../components/TopBar';
+import Sidebar from './Sidebar';
 
 class Layout extends Component {
+    constructor(props) {
+        super(props);
 
-  componentDidMount() {
-    const { updateUser, lastSuccessfulUserFetch } = this.props
-    const now = new Date()
-    if (!lastSuccessfulUserFetch) {
-      updateUser()
-    } else if ((now - lastSuccessfulUserFetch) / 1000 > 300) {
-      updateUser()
+        this.updateAll = this.updateAll.bind(this);
     }
-  }
 
-  render() {
-    const { isFetchingUser, children, errorMsg, dismissError } = this.props
-    const toasts = errorMsg ? [{ text: errorMsg }] :[]
-    return (
-      <div>
-        {
-          isFetchingUser
-            ? <CircularProgress id='main-progress' />
-            : <div>
-              <TopBar />
-              <div className='main-container'>
-                <Sidebar />
-                {children}
-              </div>
-            </div>
+    componentDidMount() {
+        const { fetchUserRequest, immGithub } = this.props;
+        const lastSuccessfulUserFetch = immGithub.get('lastSuccessfulUserFetch');
+        const now = new Date();
+
+        if (!lastSuccessfulUserFetch) {
+            fetchUserRequest();
+        } else if ((now - lastSuccessfulUserFetch) / 1000 > 300) {
+            fetchUserRequest();
         }
-        <Snackbar
-          id='error-snackbar'
-          toasts={toasts}
-          onDismiss={dismissError}
-        />
-      </div>
-    )
-  }
+    }
+
+    updateAll() {
+        const { fetchUserRequest, fetchReposRequest } = this.props;
+        fetchUserRequest();
+        fetchReposRequest();
+    }
+
+    render() {
+        const { children, dismissError, immGithub } = this.props;
+        const user = immGithub.get('user');
+        const isFetchingUser = immGithub.get('isFetchingUser');
+        const errorMessage = immGithub.get('errorMsg');
+        const toasts = errorMessage ? [{ text: errorMessage }] : [];
+
+        return (
+            <div>
+                {isFetchingUser || !user ? (
+                    <CircularProgress id='main-progress' />
+                ) : (
+                    <div>
+                        <TopBar user={user} updateAll={this.updateAll} />
+                        <div className='main-container'>
+                            <Sidebar user={user} />
+                            {children}
+                        </div>
+                    </div>
+                )}
+                <Snackbar id='error-snackbar' toasts={toasts} onDismiss={dismissError} />
+            </div>
+        );
+    }
 }
 
+Layout.propTypes = {
+    immGithub: PropTypes.object.isRequired,
+    fetchUserRequest: PropTypes.func.isRequired,
+    fetchReposRequest: PropTypes.func.isRequired,
+};
 
-export default connect(Layout)
+export default connect(
+    state => ({
+        immGithub: state.immGithub,
+    }),
+    {
+        fetchUserRequest,
+        fetchReposRequest,
+        dismissError,
+    },
+)(Layout);

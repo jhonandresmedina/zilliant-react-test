@@ -1,21 +1,16 @@
-import React from 'react'
-import { Toolbar, Avatar, Button } from 'react-md'
+import React from 'react';
+import { Toolbar, Avatar, Button } from 'react-md';
 
-import { connect } from '../store'
+const TopBar = ({ user, updateAll }) => {
+    const avatar = user ? <Avatar key='avt' src={user.get('avatar_url')} /> : <Avatar key='avt' />;
+    const name = user ? user.get('login') : '';
+    const button = (
+        <Button onClick={updateAll} icon>
+            replay
+        </Button>
+    );
 
-const TopBar = ({ user, updateUser, updateRepos }) => {
-  const updateAll = () => {
-    updateUser()
-    updateRepos()
-  }
-  const avatar = user
-    ? <Avatar key='avt' src={user.avatar_url} />
-    : <Avatar key='avt' />
-  const name = user ? user.login : ''
-  const button = <Button onClick={updateAll} icon>replay</Button>
-  return (
-    <Toolbar fixed colored nav={avatar} title={name} actions={button} />
-  )
-}
+    return <Toolbar fixed colored nav={avatar} title={name} actions={button} />;
+};
 
-export default connect(TopBar)
+export default TopBar;
